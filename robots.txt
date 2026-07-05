@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dexhtml.github.io/check-before-action/sitemap.xml
