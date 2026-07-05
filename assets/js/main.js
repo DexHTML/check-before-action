@@ -1,3 +1,26 @@
+window.METRIKA_ID = 110429323;
+
+(function initMetrika() {
+  if (!window.METRIKA_ID) return;
+
+  window.ym = window.ym || function ymFallback() {
+    (window.ym.a = window.ym.a || []).push(arguments);
+  };
+  window.ym.l = 1 * new Date();
+
+  window.ym(window.METRIKA_ID, 'init', {
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+    webvisor: true
+  });
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://mc.yandex.ru/metrika/tag.js';
+  document.head.appendChild(script);
+})();
+
 function trackEvent(name, params = {}) {
   if (window.ym && window.METRIKA_ID) {
     window.ym(window.METRIKA_ID, 'reachGoal', name, params);
