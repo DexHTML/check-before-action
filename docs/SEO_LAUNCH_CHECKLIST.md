@@ -21,15 +21,15 @@
 - Google Search Console подтверждён для проекта.
 - Google verification file добавлен: `google387d1835df61fa49.html`.
 - Google verification meta-тег добавлен в `index.html`.
+- Sitemap отправлен/проверяется в Google Search Console.
+- Главная и ключевые страницы отправлены на индексацию в Google.
 
 ## Следующий ручной этап
 
-1. Добавить sitemap в Google Search Console:
-   `https://dexhtml.github.io/check-before-action/sitemap.xml`
-2. При возможности запросить индексацию в Google для главной страницы:
-   `https://dexhtml.github.io/check-before-action/`
-3. Проверить индексацию в Яндексе и Google через 7–14 дней.
-4. До паузы добавить второй слой SEO-страниц или усилить текущие страницы.
+1. Проверить статус sitemap в Google Search Console через 1–2 дня.
+2. Проверить индексацию в Яндексе и Google через 7–14 дней.
+3. До паузы добавить второй слой SEO-страниц или усилить текущие страницы.
+4. Перед месячной паузой зафиксировать контрольную дату и список метрик для проверки после возвращения.
 
 ## Метрики, которые смотрим через месяц
 
