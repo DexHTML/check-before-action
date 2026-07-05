@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Семейное кодовое слово против телефонных мошенников</title>
+  <meta name="description" content="Создайте семейное кодовое слово и памятку для родителей: что делать, если звонят и срочно просят деньги от имени родственника.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="../index.html">Проверь перед действием</a>
+    <nav class="top-nav" aria-label="Основная навигация">
+      <a href="proverka-zvonka.html">Проверить звонок</a>
+      <a href="proverka-perevoda.html">Проверить перевод</a>
+      <a href="../pages/zashchitit-roditeley.html">Защитить родителей</a>
+    </nav>
+  </header>
+
+  <main class="page-layout">
+    <article class="article">
+      <p class="eyebrow">Инструмент · семья</p>
+      <h1>Генератор семейного кодового слова и памятки</h1>
+      <div class="quick-answer">
+        <strong>Идея:</strong> если кто-то звонит от имени родственника и срочно просит деньги, сначала он должен назвать семейное кодовое слово. Если не назвал — деньги не переводим.
+      </div>
+      <p>Введите только те данные, которые готовы видеть на экране. Информация не отправляется на сервер и не сохраняется.</p>
+
+      <section class="tool-box">
+        <form id="family-code-form">
+          <div class="question">
+            <p>1. Кодовое слово или фраза</p>
+            <input class="copy-area" style="min-height: 48px" name="code_word" placeholder="Например: синяя кружка" required>
+          </div>
+          <div class="question">
+            <p>2. Кому перезвонить для проверки</p>
+            <input class="copy-area" style="min-height: 48px" name="trusted_contact" placeholder="Например: сыну по сохранённому номеру">
+          </div>
+          <div class="question">
+            <p>3. Дополнительное действие при тревожном звонке</p>
+            <input class="copy-area" style="min-height: 48px" name="backup_action" placeholder="Например: позвонить второму родственнику">
+          </div>
+          <button class="button button-primary" type="submit" data-track="family_code_submit">Собрать памятку</button>
+        </form>
+
+        <div id="family-result" class="result" aria-live="polite">
+          <h2>Памятка готова</h2>
+          <textarea id="family-memo" class="copy-area" readonly></textarea>
+          <div class="actions">
+            <button class="button button-secondary" type="button" data-copy-target="family-memo" data-track="family_memo_copy">Скопировать памятку</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="disclaimer">
+        Не используйте слишком очевидное кодовое слово. Обсудите правило лично и убедитесь, что родственники поняли: коды из СМС и данные карты нельзя сообщать никому.
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <div class="sidebar-box">
+        <h2>Связанные материалы</h2>
+        <ul>
+          <li><a href="../pages/zashchitit-roditeley.html">Как защитить родителей</a></li>
+          <li><a href="../pages/rodstvennik-prosit-dengi.html">Родственник просит срочно деньги</a></li>
+          <li><a href="proverka-zvonka.html">Проверить подозрительный звонок</a></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p>Проект помогает заметить признаки риска и не заменяет официальные службы, банк или юридическую консультацию.</p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/family-code-tool.js"></script>
+</body>
+</html>
