@@ -24,6 +24,30 @@ function renderCallQuestions() {
   form.addEventListener('submit', handleCallCheck);
 }
 
+function renderCallNextSteps(score) {
+  const urgentLinks = score >= 10 ? `
+    <li><a href="../pages/zvonyat-iz-banka-prosyat-perevesti-na-bezopasnyy-schet.html" data-track="call_result_safe_account">Просят перевести на безопасный счёт</a></li>
+    <li><a href="../pages/ustanovil-prilozhenie-po-prosbe-zvonyashchego.html" data-track="call_result_remote_app">Установил приложение по просьбе звонящего</a></li>
+    <li><a href="../pages/skazal-kod-iz-sms.html" data-track="call_result_sms_code">Сказал код из СМС</a></li>
+  ` : `
+    <li><a href="../pages/oformlyayut-kredit-bez-soglasiya.html" data-track="call_result_credit">Оформляют кредит без вашего согласия</a></li>
+    <li><a href="../pages/skazal-kod-iz-sms.html" data-track="call_result_sms_code">Что делать, если сказал код</a></li>
+    <li><a href="../pages/zashchitit-roditeley.html" data-track="call_result_parents">Как защитить родителей</a></li>
+  `;
+
+  return `
+    <div class="safe-box">
+      <h3>Следующий шаг</h3>
+      <p>Выберите инструкцию, которая ближе всего к вашей ситуации. Так вы не будете искать заново и не потеряете время.</p>
+      <ul>${urgentLinks}</ul>
+      <div class="actions">
+        <button class="button button-secondary" type="button" data-copy-current-url data-track="call_result_copy_url">Скопировать ссылку на проверку</button>
+        <a class="button button-secondary" href="../pages/karta-sayta.html" data-track="call_result_sitemap">Все инструкции</a>
+      </div>
+    </div>
+  `;
+}
+
 function handleCallCheck(event) {
   event.preventDefault();
 
@@ -57,7 +81,7 @@ function handleCallCheck(event) {
         <li>Положите трубку.</li>
         <li>Позвоните в банк по номеру с карты или официального сайта.</li>
         <li>Предупредите близких, если звонок касался родственников.</li>
-        <li>Если вы уже что-то сообщили, перейдите к инструкции «Что делать, если сказал код из СМС».</li>
+        <li>Если вы уже что-то сообщили, перейдите к срочной инструкции ниже.</li>
       </ul>
     `;
   } else if (score >= 5) {
@@ -90,7 +114,7 @@ function handleCallCheck(event) {
     body.innerHTML += `<h3>Красные флаги в ваших ответах</h3><ul>${redFlags.map(flag => `<li>${flag}</li>`).join('')}</ul>`;
   }
 
-  body.innerHTML += '<p><a href="../pages/skazal-kod-iz-sms.html">Если вы уже назвали код из СМС — откройте срочную инструкцию.</a></p>';
+  body.innerHTML += renderCallNextSteps(score);
   trackEvent('call_checker_finished', { score });
   result.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
