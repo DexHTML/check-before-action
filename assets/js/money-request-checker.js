@@ -24,6 +24,45 @@ function renderMoneyQuestions() {
   form.addEventListener('submit', handleMoneyCheck);
 }
 
+function renderMoneyNextSteps(score, formData) {
+  const hasNewDetails = formData.get('new_details') === 'yes';
+  const hasNoCallback = formData.get('no_callback') === 'yes';
+  const hasUnusualMethod = formData.get('unusual_method') === 'yes';
+
+  let links = [];
+
+  if (hasNewDetails) {
+    links.push(['../pages/postavshchik-smenil-rekvizity.html', 'Поставщик сменил реквизиты', 'money_result_supplier_details']);
+  }
+  if (hasNoCallback) {
+    links.push(['../pages/rodstvennik-prosit-dengi.html', 'Родственник или знакомый срочно просит деньги', 'money_result_relative']);
+  }
+  if (hasUnusualMethod) {
+    links.push(['../pages/prodavec-prosit-predoplatu.html', 'Продавец просит предоплату', 'money_result_prepayment']);
+  }
+
+  if (score >= 9) {
+    links.push(['../pages/perevel-dengi-moshennikam.html', 'Если деньги уже переведены', 'money_result_already_paid']);
+    links.push(['../pages/direktor-prosit-srochno-oplatit.html', 'Директор просит срочно оплатить', 'money_result_director_payment']);
+  } else {
+    links.push(['../pages/pokupatel-prosit-pereyti-v-telegram.html', 'Покупатель просит перейти в мессенджер', 'money_result_messenger']);
+  }
+
+  const uniqueLinks = links.filter((link, index, array) => array.findIndex(item => item[0] === link[0]) === index).slice(0, 4);
+
+  return `
+    <div class="safe-box">
+      <h3>Что открыть дальше</h3>
+      <p>Выберите ближайшую ситуацию и проверьте её по подробной инструкции.</p>
+      <ul>${uniqueLinks.map(([href, label, track]) => `<li><a href="${href}" data-track="${track}">${label}</a></li>`).join('')}</ul>
+      <div class="actions">
+        <button class="button button-secondary" type="button" data-copy-current-url data-track="money_result_copy_url">Скопировать ссылку на проверку</button>
+        <a class="button button-secondary" href="../pages/karta-sayta.html" data-track="money_result_sitemap">Все инструкции</a>
+      </div>
+    </div>
+  `;
+}
+
 function handleMoneyCheck(event) {
   event.preventDefault();
 
@@ -90,7 +129,7 @@ function handleMoneyCheck(event) {
     body.innerHTML += `<h3>Что насторожило</h3><ul>${redFlags.map(flag => `<li>${flag}</li>`).join('')}</ul>`;
   }
 
-  body.innerHTML += '<p><a href="../pages/perevel-dengi-moshennikam.html">Если деньги уже переведены — откройте инструкцию первых действий.</a></p>';
+  body.innerHTML += renderMoneyNextSteps(score, formData);
   trackEvent('money_checker_finished', { score });
   result.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
