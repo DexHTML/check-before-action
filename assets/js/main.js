@@ -164,6 +164,43 @@ const FAQ_BY_PATH = {
   });
 })();
 
+(function injectArticleShareBox() {
+  document.addEventListener('DOMContentLoaded', () => {
+    const excludedPages = [
+      '/check-before-action/pages/o-proekte.html',
+      '/check-before-action/pages/politika-konfidencialnosti.html',
+      '/check-before-action/pages/karta-sayta.html'
+    ];
+
+    if (!window.location.pathname.startsWith('/check-before-action/pages/')) return;
+    if (excludedPages.includes(window.location.pathname)) return;
+    if (document.querySelector('.share-box')) return;
+
+    const article = document.querySelector('.article');
+    if (!article) return;
+
+    const box = document.createElement('div');
+    box.className = 'safe-box share-box';
+    box.innerHTML = `
+      <h3>Сохранить или отправить близким</h3>
+      <p>Эту инструкцию можно быстро переслать человеку, который столкнулся с похожей ситуацией. Ссылка не содержит ваших данных.</p>
+      <div class="actions">
+        <button class="button button-secondary" type="button" data-copy-current-url data-track="article_share_copy_url">Скопировать ссылку</button>
+        <a class="button button-secondary" href="../tools/proverka-zvonka.html" data-track="article_share_call_tool">Проверить звонок</a>
+        <a class="button button-secondary" href="../tools/proverka-perevoda.html" data-track="article_share_money_tool">Проверить перевод</a>
+      </div>
+    `;
+
+    const disclaimer = article.querySelector('.disclaimer');
+    if (disclaimer) {
+      article.insertBefore(box, disclaimer);
+      return;
+    }
+
+    article.appendChild(box);
+  });
+})();
+
 function trackEvent(name, params = {}) {
   if (window.ym && window.METRIKA_ID) {
     window.ym(window.METRIKA_ID, 'reachGoal', name, params);
