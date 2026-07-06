@@ -189,6 +189,19 @@ function copyTextFromElement(elementId, eventName = 'copy_text') {
   });
 }
 
+function copyCurrentPageUrl(button, eventName = 'copy_current_url') {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    trackEvent(eventName, { href: window.location.href });
+    if (button) {
+      const oldText = button.textContent;
+      button.textContent = 'Ссылка скопирована';
+      setTimeout(() => { button.textContent = oldText; }, 1800);
+    }
+  }).catch(() => {
+    alert('Не получилось скопировать ссылку автоматически. Скопируйте адрес страницы из строки браузера.');
+  });
+}
+
 document.addEventListener('click', (event) => {
   const target = event.target.closest('[data-track]');
   if (target) {
@@ -201,5 +214,10 @@ document.addEventListener('click', (event) => {
   const copyButton = event.target.closest('[data-copy-target]');
   if (copyButton) {
     copyTextFromElement(copyButton.dataset.copyTarget, copyButton.dataset.track || 'copy_text');
+  }
+
+  const copyUrlButton = event.target.closest('[data-copy-current-url]');
+  if (copyUrlButton) {
+    copyCurrentPageUrl(copyUrlButton, copyUrlButton.dataset.track || 'copy_current_url');
   }
 });
