@@ -46,8 +46,18 @@
         <div id="family-result" class="result" aria-live="polite">
           <h2>Памятка готова</h2>
           <textarea id="family-memo" class="copy-area" readonly></textarea>
+          <div class="safe-box">
+            <h3>Что сделать дальше</h3>
+            <ul>
+              <li>Скопируйте памятку и отправьте близким.</li>
+              <li>Обсудите правило голосом или лично, чтобы человек точно понял порядок действий.</li>
+              <li>Сохраните ссылку на этот инструмент, если нужно будет быстро обновить памятку.</li>
+            </ul>
+          </div>
           <div class="actions">
             <button class="button button-secondary" type="button" data-copy-target="family-memo" data-track="family_memo_copy">Скопировать памятку</button>
+            <button class="button button-secondary" type="button" data-copy-current-url data-track="family_tool_copy_url">Скопировать ссылку на инструмент</button>
+            <a class="button button-secondary" href="../pages/zashchitit-roditeley.html" data-track="family_tool_parents_guide">Инструкция для родителей</a>
           </div>
         </div>
       </section>
