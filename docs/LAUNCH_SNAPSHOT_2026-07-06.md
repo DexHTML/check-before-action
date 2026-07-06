@@ -1,0 +1,116 @@
+# Launch snapshot — 2026-07-06
+
+## Проект
+
+`Проверь перед действием`
+
+URL:
+
+`https://dexhtml.github.io/check-before-action/`
+
+Цель MVP: проверить спрос на быстрые справочные проверки перед рискованным действием: перевод денег, ввод кода, переход по ссылке, подозрительный звонок, срочная просьба в мессенджере.
+
+## Стек
+
+- HTML
+- CSS
+- JavaScript
+- GitHub Pages
+- Яндекс Метрика
+- Яндекс Вебмастер
+- Google Search Console
+
+## Опубликованная структура
+
+### Главная
+
+- `index.html`
+
+### Инструменты
+
+- `tools/proverka-zvonka.html`
+- `tools/proverka-perevoda.html`
+- `tools/semeynoe-kodovoe-slovo.html`
+
+### SEO-страницы первого слоя
+
+- `pages/perevel-dengi-moshennikam.html`
+- `pages/skazal-kod-iz-sms.html`
+- `pages/vvel-dannye-karty.html`
+- `pages/prislali-ssylku-na-dostavku.html`
+- `pages/zashchitit-roditeley.html`
+- `pages/rodstvennik-prosit-dengi.html`
+
+### SEO-страницы второго слоя
+
+- `pages/zvonyat-iz-banka-prosyat-perevesti-na-bezopasnyy-schet.html`
+- `pages/pokupatel-prosit-pereyti-v-telegram.html`
+- `pages/prodavec-prosit-predoplatu.html`
+- `pages/postavshchik-smenil-rekvizity.html`
+- `pages/ustanovil-prilozhenie-po-prosbe-zvonyashchego.html`
+- `pages/vzlomali-messendzher-i-prosyat-dengi.html`
+
+### SEO-страницы третьего слоя
+
+- `pages/oformlyayut-kredit-bez-soglasiya.html`
+- `pages/pereshel-po-podozritelnoy-ssylke.html`
+- `pages/nazval-pasportnye-dannye.html`
+- `pages/direktor-prosit-srochno-oplatit.html`
+
+### Служебные страницы
+
+- `pages/o-proekte.html`
+- `pages/politika-konfidencialnosti.html`
+- `pages/karta-sayta.html`
+
+## Технические SEO-файлы
+
+- `robots.txt`
+- `sitemap.xml` — 23 URL
+- `.nojekyll`
+- `404.html`
+- `google387d1835df61fa49.html`
+
+## Усиления качества
+
+- Главная ведёт на ключевые страницы первого, второго и третьего слоя.
+- HTML-карта сайта содержит все основные страницы.
+- FAQPage JSON-LD добавлена для 11 ключевых страниц.
+- Видимые FAQ-блоки добавлены для ключевых страниц.
+- Есть страницы доверия и конфиденциальности.
+- Проект не собирает банковские данные, коды, пароли, паспортные данные и результаты проверок в собственной базе.
+
+## Индексация и вебмастеры
+
+- Яндекс Вебмастер подключён.
+- Google Search Console подтверждён.
+- Sitemap отправлен.
+- Ключевые страницы первого слоя отправлены на переобход.
+- Страницы второго слоя отправлены на переобход/выборочную индексацию.
+- Страницы третьего слоя отправлены на переобход/выборочную индексацию.
+
+## Что не делаем до первых данных
+
+- Не добавляем оплату.
+- Не подключаем PHP/VPS.
+- Не создаём базу данных.
+- Не делаем личный кабинет.
+- Не обещаем возврат денег.
+- Не заявляем 100% определение мошенников.
+
+## Контрольные метрики
+
+Проверять через 7–14 дней и через месяц:
+
+- сколько страниц попало в индекс;
+- есть ли показы;
+- есть ли клики;
+- какие запросы появились;
+- какие страницы получили показы;
+- запускают ли пользователи инструменты;
+- доходят ли до результата;
+- нажимают ли кнопки копирования/интереса.
+
+## Решение на паузу
+
+После запуска не трогать проект хаотично. Дать поисковикам время на обход и индексацию. Следующие решения принимать по данным Метрики, Google Search Console и Яндекс Вебмастера.
