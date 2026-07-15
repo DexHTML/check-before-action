@@ -164,6 +164,43 @@ const FAQ_BY_PATH = {
   });
 })();
 
+(function injectEditorialReview() {
+  document.addEventListener('DOMContentLoaded', () => {
+    const pathname = window.location.pathname;
+    const isContentPage = pathname.startsWith('/check-before-action/pages/');
+    const isToolPage = pathname.startsWith('/check-before-action/tools/');
+    const excludedPages = [
+      '/check-before-action/pages/o-proekte.html',
+      '/check-before-action/pages/politika-konfidencialnosti.html',
+      '/check-before-action/pages/karta-sayta.html',
+      '/check-before-action/pages/istochniki.html'
+    ];
+
+    if ((!isContentPage && !isToolPage) || excludedPages.includes(pathname)) return;
+    if (document.querySelector('.editorial-review')) return;
+
+    const article = document.querySelector('.article');
+    if (!article) return;
+
+    const sourceHref = isToolPage ? '../pages/istochniki.html' : 'istochniki.html';
+    const review = document.createElement('div');
+    review.className = 'safe-box editorial-review';
+    review.innerHTML = `
+      <strong>Материал проверен 16 июля 2026 года.</strong>
+      Рекомендации сверены с официальными публикациями Банка России и НКЦКИ.
+      <a href="${sourceHref}" data-track="editorial_sources_open">Источники и правила проверки</a>.
+    `;
+
+    const disclaimer = article.querySelector('.disclaimer');
+    if (disclaimer) {
+      article.insertBefore(review, disclaimer);
+      return;
+    }
+
+    article.appendChild(review);
+  });
+})();
+
 (function injectArticleShareBox() {
   document.addEventListener('DOMContentLoaded', () => {
     const excludedPages = [
